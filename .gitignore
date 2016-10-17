@@ -36,3 +36,4 @@ captures/
 .DS_Store
 /captures
 #gradle.properties
+#test
