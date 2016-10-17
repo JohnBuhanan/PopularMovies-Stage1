@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Popular Movies</string>
+
+    <!--
+         By convention, "action" denotes that this String will be used as the label for an Action,
+         typically from the action bar.  The ActionBar is limited real estate, so shorter is better.
+    -->
+    <string name="action_detail">Details</string>
+
+    <string name="sort_order_label_most_popular">Most Popular</string>
+    <string name="sort_order_label_highest_rated">Highest Rated</string>
+
+    <string name="sort_order_most_popular">popular</string>
+    <string name="sort_order_highest_rated">top_rated</string>
+
+    <string name="sort_order_default">@string/sort_order_most_popular</string>
+
+    <string name="pref_sort_order_key">@string/sort_order_most_popular</string>
+</resources>
