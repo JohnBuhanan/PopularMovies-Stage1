@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 
+import com.codemonk.introtopopularmovies.api.tmdb.models.TMDBModel;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -36,7 +37,7 @@ public class MovieGridArrayAdapter extends ArrayAdapter<TMDBModel> {
 
         Uri uri = Uri.parse(BASE_TMDB_IMAGE_URL)
                 .buildUpon()
-                .appendPath(TMDBModel.posterPath.replace("/", ""))
+                .appendPath(TMDBModel.getPosterPath().replace("/", ""))
                 .build();
 
         Picasso.with(context).load(uri).into((ImageView) view);

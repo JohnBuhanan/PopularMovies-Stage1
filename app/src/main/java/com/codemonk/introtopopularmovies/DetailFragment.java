@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.codemonk.introtopopularmovies.api.tmdb.models.TMDBModel;
+
 /**
  * A placeholder fragment containing a simple view.
  */

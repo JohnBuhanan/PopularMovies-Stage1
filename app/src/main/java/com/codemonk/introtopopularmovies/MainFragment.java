@@ -14,6 +14,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
+import com.codemonk.introtopopularmovies.api.tmdb.models.TMDBModel;
+
 import java.util.ArrayList;
 
 public class MainFragment extends Fragment {
