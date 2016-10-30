@@ -1,4 +1,4 @@
-package com.codemonk.introtopopularmovies.api.tmdb.models;
+package com.codemonk.introtopopularmovies.api.tmdb.rest.models;
 
 import com.google.gson.annotations.SerializedName;
 

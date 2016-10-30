@@ -16,4 +16,5 @@
     <string name="sort_order_default">@string/sort_order_most_popular</string>
 
     <string name="pref_sort_order_key">@string/sort_order_most_popular</string>
+
 </resources>

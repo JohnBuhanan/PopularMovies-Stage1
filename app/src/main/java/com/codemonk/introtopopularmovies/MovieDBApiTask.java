@@ -4,8 +4,8 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 
-import com.codemonk.introtopopularmovies.api.Repository;
-import com.codemonk.introtopopularmovies.api.tmdb.models.TMDBModel;
+import com.codemonk.introtopopularmovies.api.TMDB;
+import com.codemonk.introtopopularmovies.api.tmdb.rest.models.TMDBModel;
 
 import java.util.ArrayList;
 
@@ -27,9 +27,9 @@ public class MovieDBApiTask extends AsyncTask<String, Void, ArrayList<TMDBModel>
 
         try {
             if (sortType.equals("top_rated")) {
-                return Repository.TMDB.getTopRated().execute().body().getResults();
+                return TMDB.API.getTopRated().execute().body().getResults();
             } else {
-                return Repository.TMDB.getPopular().execute().body().getResults();
+                return TMDB.API.getPopular().execute().body().getResults();
             }
         } catch (Exception ex) {
             Log.e(LOG_TAG, "Woops again...");

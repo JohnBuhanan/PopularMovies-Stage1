@@ -1,8 +1,8 @@
-package com.codemonk.introtopopularmovies.api.tmdb;
+package com.codemonk.introtopopularmovies.api.tmdb.rest;
 
 import com.codemonk.introtopopularmovies.BuildConfig;
-import com.codemonk.introtopopularmovies.api.tmdb.models.TMDBModel;
-import com.codemonk.introtopopularmovies.api.tmdb.models.TMDBResponse;
+import com.codemonk.introtopopularmovies.api.tmdb.rest.models.TMDBModel;
+import com.codemonk.introtopopularmovies.api.tmdb.rest.models.TMDBResponse;
 
 import java.io.IOException;
 

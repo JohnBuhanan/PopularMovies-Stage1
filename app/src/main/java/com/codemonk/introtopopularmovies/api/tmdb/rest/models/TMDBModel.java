@@ -1,4 +1,4 @@
-package com.codemonk.introtopopularmovies.api.tmdb.models;
+package com.codemonk.introtopopularmovies.api.tmdb.rest.models;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -105,6 +105,7 @@ public class TMDBModel implements Parcelable {
     private Double voteAverage;
 
     public String getPosterPath() {
+
         return posterPath;
     }
 
@@ -168,6 +169,7 @@ public class TMDBModel implements Parcelable {
         this.originalLanguage = originalLanguage;
     }
 
+    // Get year from "2016-09-14"
     public String getTitle() {
         return title;
     }

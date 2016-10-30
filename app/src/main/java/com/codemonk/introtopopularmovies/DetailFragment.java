@@ -1,14 +1,19 @@
 package com.codemonk.introtopopularmovies;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.codemonk.introtopopularmovies.api.tmdb.models.TMDBModel;
+import com.codemonk.introtopopularmovies.api.TMDB;
+import com.codemonk.introtopopularmovies.api.tmdb.images.TMDBImages;
+import com.codemonk.introtopopularmovies.api.tmdb.rest.models.TMDBModel;
+import com.squareup.picasso.Picasso;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -21,51 +26,49 @@ public class DetailFragment extends Fragment {
         setHasOptionsMenu(true);
     }
 
+    private ImageView mBackdropView;
+    private ImageView mPosterView;
+    private TextView mTitleView;
+    private TextView mVoteAverageView;
+    private TextView mOverviewView;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_detail, container, false);
 
-        // The detail Activity called via intent.  Inspect the intent for forecast data.
+        // The detail Activity called via intent.
         Intent intent = getActivity().getIntent();
-        if (intent != null && intent.hasExtra(TMDBModel.class.getSimpleName())) {
-            TMDBModel tmdbModel = (TMDBModel) intent.getParcelableExtra(TMDBModel.class.getSimpleName());
+        if (intent == null || !intent.hasExtra(TMDBModel.class.getSimpleName()))
+            return rootView;
 
-            ((TextView) rootView.findViewById(R.id.detail_text))
-                    .setText("YYO YOY OY OY");
-        }
+        TMDBModel tmdbModel = (TMDBModel) intent.getParcelableExtra(TMDBModel.class.getSimpleName());
+
+        mBackdropView = (ImageView) rootView.findViewById(R.id.detail_backdrop_imageview);
+        mPosterView = (ImageView) rootView.findViewById(R.id.detail_poster_imageview);
+        mTitleView = (TextView) rootView.findViewById(R.id.detail_title_textview);
+        mVoteAverageView = (TextView) rootView.findViewById(R.id.detail_voteaverage_textview);
+        mOverviewView = (TextView) rootView.findViewById(R.id.detail_overview_textview);
+
+        Uri backdropUri = TMDB.IMAGES.getBackdropUri(tmdbModel.getBackdropPath());
+        Picasso.with(getContext()).load(backdropUri).into((ImageView) mBackdropView);
+
+        Uri posterUri = TMDB.IMAGES.getUri(tmdbModel.getPosterPath(), TMDBImages.TYPE.POSTER_SMALL);
+        Picasso.with(getContext()).load(posterUri).into((ImageView) mPosterView);
+
+        String year = tmdbModel.getReleaseDate().split("-")[0];
+        String formattedTitle = String.format(tmdbModel.getTitle() + " (%1s)", year);
+
+        mTitleView.setText(formattedTitle);
+
+        Double voteAverage = tmdbModel.getVoteAverage();
+        String voteAverageRounded = String.format("%1$.1f", voteAverage);
+        String voteAverageText = voteAverageRounded + "/10";
+
+        mVoteAverageView.setText(voteAverageText);
+        mOverviewView.setText(tmdbModel.getOverview());
 
         return rootView;
     }
-
-//    @Override
-//    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        inflater.inflate(R.menu.detailfragment, menu);
-//
-//        // Retrieve the share menu item
-//        MenuItem menuItem = menu.findItem(R.id.action_share);
-//
-//        // Get the provider and hold onto it to set/change the share intent.
-//        ShareActionProvider mShareActionProvider =
-//                (ShareActionProvider) MenuItemCompat.getActionProvider(menuItem);
-//
-//        // Attach an intent to this ShareActionProvider.  You can update this at any time,
-//        // like when the user selects a new piece of data they might like to share.
-//        if (mShareActionProvider != null ) {
-//            mShareActionProvider.setShareIntent(createShareForecastIntent());
-//        } else {
-//            Log.d(LOG_TAG, "Share Action Provider is null?");
-//        }
-//    }
-//
-//    private Intent createShareForecastIntent() {
-//        Intent shareIntent = new Intent(Intent.ACTION_SEND);
-//        shareIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
-//        shareIntent.setType("text/plain");
-//        shareIntent.putExtra(Intent.EXTRA_TEXT,
-//                mForecastStr + FORECAST_SHARE_HASHTAG);
-//        return shareIntent;
-//    }
 }
