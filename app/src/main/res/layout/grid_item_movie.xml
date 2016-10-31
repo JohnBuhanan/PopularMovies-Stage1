@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
+    android:contentDescription="@string/movie_poster"
     android:scaleType="fitXY">
 </ImageView>
     <!--fitCenter-->
