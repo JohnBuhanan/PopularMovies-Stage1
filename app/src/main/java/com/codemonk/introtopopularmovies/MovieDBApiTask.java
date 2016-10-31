@@ -4,7 +4,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 
-import com.codemonk.introtopopularmovies.api.TMDB;
+import com.codemonk.introtopopularmovies.api.tmdb.TMDB;
 import com.codemonk.introtopopularmovies.api.tmdb.rest.models.TMDBModel;
 
 import java.util.ArrayList;

@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 
-import com.codemonk.introtopopularmovies.api.TMDB;
+import com.codemonk.introtopopularmovies.api.tmdb.TMDB;
 import com.codemonk.introtopopularmovies.api.tmdb.rest.models.TMDBModel;
 import com.squareup.picasso.Picasso;
 

@@ -1,4 +1,4 @@
-package com.codemonk.introtopopularmovies.api;
+package com.codemonk.introtopopularmovies.api.tmdb;
 
 import com.codemonk.introtopopularmovies.api.tmdb.images.TMDBImages;
 import com.codemonk.introtopopularmovies.api.tmdb.rest.TMDBApi;
