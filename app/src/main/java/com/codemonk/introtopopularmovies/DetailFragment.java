@@ -64,7 +64,7 @@ public class DetailFragment extends Fragment {
 
         Double voteAverage = tmdbModel.getVoteAverage();
         String voteAverageRounded = String.format("%1$.1f", voteAverage);
-        String voteAverageText = voteAverageRounded + "/10";
+        String voteAverageText = voteAverageRounded + "/10 ";
 
         mVoteAverageView.setText(voteAverageText);
         mOverviewView.setText(tmdbModel.getOverview());
